@@ -4,11 +4,10 @@ basic.forever(function () {
     if (input.buttonIsPressed(Button.A)) {
         abstand += grove.measureInCentimeters(DigitalPin.C16)
         if (abstand < 30) {
-            music.playMelody("C5 A C5 A C5 A - - ", 120)
+            music.playTone(262, music.beat(BeatFraction.Whole))
         } else {
-            basic.showIcon(IconNames.Happy)
+            basic.showIcon(IconNames.Sad)
         }
-        basic.showIcon(IconNames.Sad)
         basic.showNumber(abstand)
         basic.showLeds(`
             . . . . .
@@ -19,10 +18,10 @@ basic.forever(function () {
             `)
     } else {
         basic.showLeds(`
-            . . # . .
-            . # . . .
-            # # # # #
-            . # . . .
+            . # . # .
+            . # . # .
+            # . . . #
+            . # . # .
             . . # . .
             `)
         basic.pause(200)
